@@ -1,42 +1,14 @@
-// Geliştirici ayrılmadan önce, yemek dağıtım hizmetimiz için kullanıcı hesaplarını yönettiğimiz kaynak kodunu hackledi.
-//  Nesnenin özelliklerine erişirken eksik olan this ifadesini değiştirerek customer nesnesinin metodlarını yeniden düzenleyin.
+// DOM özelliklerini ve yöntemlerini kullanarak, aşağıdaki işlevleri gerçekleştiren bir script yazın:
 
+// ul#categories içindeki kategorilerin sayısını ve yani li.item öğelerinin sayısını hesaplar ve konsola yazdırır.
+// ul#categories listesindeki her li.item öğesi için, öğenin başlığının metnini ( <h2> etiketi) ve kategorideki öğe sayısını (içinde bulunan tüm <li> öğeleri) bulur ve konsola yazdırır.
 
+const categories = document.querySelectorAll('#categories .item');
+console.log(`Number of categories: ${categories.length}`);
 
-// Bu başlangıç kodunu kullanın ve yeniden düzenleyin. Nesneyi tanımladıktan sonra yöntem çağrılarını ekleyin. 
-// Çalışmalarının sonuçları konsolda görüntülenecektir. Lütfen orada herhangi bir değişiklik yapmayın.
-
-
-
-const customer = {
-  username: "Mango",
-  balance: 24000,
-  discount: 0.1,
-  orders: ["Burger", "Pizza", "Salad"],
-
-
-  // Change code below this line
-  getBalance() {
-    return this.balance;
-  },
-  getDiscount() {
-    return this.discount;
-  },
-  setDiscount(value) {
-    this.discount = value;
-  },
-  getOrders() {
-    return this.orders;
-  },
-  addOrder(cost, order) {
-    this.balance -= cost - cost * this.discount;
-    this.orders.push(order);
-  },
-  // Change code above this line
-};
-
-customer.setDiscount(0.15);
-console.log(customer.getDiscount()); // 0.15
-customer.addOrder(5000, "Steak");
-console.log(customer.getBalance()); // 19750
-console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
+categories.forEach(category => {
+    const title = category.querySelector('h2').textContent;
+    const itemsCount = category.querySelectorAll('li').length;
+    console.log(`Category: ${title}`);
+    console.log(`Elements: ${itemsCount}`);
+});
